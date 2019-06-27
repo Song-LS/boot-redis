@@ -4,6 +4,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -115,5 +116,81 @@ public class RedisList {
         System.out.println(pop);
     }
 
+    /**
+     * 移除集合中右边的元素在等待的时间里， 如果超过等待的时间仍然没有元素则退出
+     *
+     * rightPop(K key, long timeout, TimeUnit unit)
+     */
+    public void rightPopWait() {
+        stringRedisTemplate.opsForList().rightPop("list2",10, TimeUnit.SECONDS);
+    }
 
+    /**
+     * 移除第一个集合右边的一个元素，插入第二个集合左边插入这个元素
+     *
+     * rightPopAndLeftPush(K sourceKet, k destinationKey)
+     */
+    public void rightPopAndLeftPush() {
+        stringRedisTemplate.opsForList().rightPopAndLeftPush("list2", "list3");
+    }
+
+    /**
+     * 在集合的指定位置插入元素，如果指定位置已有元素，则覆盖，没有则新增，超过集合下标+n则会报错
+     *
+     * set(K key, long index, V value)
+     */
+    public void set() {
+        stringRedisTemplate.opsForList().set("list2", 2, "w");
+    }
+
+    /**
+     * 从存储在键中的列表中删除等于值的元素的第一个计数事件，count>0：删除等于从左到右移动的值
+     * count<0：删除等于从右到左移动的值的第一个元素；
+     * count=0：删除等于value的所有元素
+     *
+     * remove(K key, long count, Object value)
+     */
+    public void remove() {
+        Long remove = stringRedisTemplate.opsForList().remove("list2", 2, "w");
+        System.out.println(remove);
+    }
+
+    /**
+     * 截取集合元素长度， 保留长度内的数据
+     *
+     * trim(K key, long start, long end)
+     */
+    public void trim() {
+        stringRedisTemplate.opsForList().trim("list2", 0, 3);
+    }
+
+    /**
+     * 获取集合指定位置的值
+     *
+     * index(K key, long index)
+     */
+    public void index() {
+        String listValue = stringRedisTemplate.opsForList().index("list2", 3);
+        System.out.println(listValue);
+    }
+
+    /**
+     * 获取指定区间的值
+     *
+     * range(K key, long start, long end)
+      */
+    public void range() {
+        List<String> list = stringRedisTemplate.opsForList().range("list", 0, -1);
+        System.out.println(list);
+    }
+
+    /**
+     * 删除指定集合，返回true，删除成功
+     *
+     * delete(K key)
+     */
+    public void delete() {
+        Boolean delete = stringRedisTemplate.opsForList().getOperations().delete("list2");
+        System.out.println(delete);
+    }
 }
