@@ -1,5 +1,6 @@
 package com.sls.redisString;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,7 @@ public class RedisString {
      * <p>
      * set(K key, V value)
      */
+    @Bean
     public void set() {
         // 存入永久数据
         stringRedisTemplate.opsForValue().set("test2", "1");
