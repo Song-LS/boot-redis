@@ -21,7 +21,7 @@ public class PubController {
     @PostMapping("/message")
     public void sendMessage() {
         int i = count.incrementAndGet();
-        stringRedisTemplate.convertAndSend("topic","消息"+i);
+        stringRedisTemplate.convertAndSend("topic", "消息" + i);
     }
 
 }

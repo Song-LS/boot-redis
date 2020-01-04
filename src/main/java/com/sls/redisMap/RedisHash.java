@@ -19,29 +19,29 @@ public class RedisHash {
 
     /**
      * 新增hashMap值
-     *
+     * <p>
      * put(H key, HK hashKey, HV value)
      */
     public void put() {
-        stringRedisTemplate.opsForHash().put("hash","hash-key","hash-value");
-        stringRedisTemplate.opsForHash().put("hash","hash-key2","hash-value2");
+        stringRedisTemplate.opsForHash().put("hash", "hash-key", "hash-value");
+        stringRedisTemplate.opsForHash().put("hash", "hash-key2", "hash-value2");
     }
 
     /**
      * 以map集合的形式添加键值对
-     *
+     * <p>
      * putAll(H key, Map<? extend HK, ? extend HV m>)
      */
     public void putAll() {
         Map<String, String> map = new HashMap<>(16);
-        map.put("hash-key3","hash-value3");
-        map.put("hash-key4","hash-value4");
-        stringRedisTemplate.opsForHash().putAll("hash",map);
+        map.put("hash-key3", "hash-value3");
+        map.put("hash-key4", "hash-value4");
+        stringRedisTemplate.opsForHash().putAll("hash", map);
     }
 
     /**
      * 如果变量值存在，在变量中可以添加不存在的键值对，如果变量不存在，在新增一个变量，同时将键值对添加到该变量，添加成功返回true否则返回false
-     *
+     * <p>
      * putIfAbsent(H key, HK hashKey, HV value)
      */
     public void putIfAbsent() {
@@ -53,7 +53,7 @@ public class RedisHash {
 
     /**
      * 获取指定变量中的hashMap值
-     *
+     * <p>
      * value(H key)
      */
     public void values() {
@@ -63,7 +63,7 @@ public class RedisHash {
 
     /**
      * 获取变量中的键值对
-     *
+     * <p>
      * entries(H key)
      */
     public void entires() {
@@ -73,7 +73,7 @@ public class RedisHash {
 
     /**
      * 获取变量中的键
-     *
+     * <p>
      * keys(H key)
      */
     public void keys() {
@@ -83,9 +83,8 @@ public class RedisHash {
 
     /**
      * 获取变量的长度
-     *
+     * <p>
      * size(H key)
-     *
      */
     public void siz() {
         Long size = stringRedisTemplate.opsForHash().size("hash");
@@ -94,7 +93,7 @@ public class RedisHash {
 
     /**
      * 使变量中的键已long值的大小进行自增长，值必须为Integer类型，否则异常
-     *
+     * <p>
      * increment(H key, HK hashKsy, long data)
      */
     public void increment() {
@@ -104,7 +103,7 @@ public class RedisHash {
 
     /**
      * 以集合的方式获取变量中的值
-     *
+     * <p>
      * multiGet(H key, Collection<HK> hashKeys)
      */
     public void multiGet() {
@@ -115,26 +114,25 @@ public class RedisHash {
     /**
      * 匹配获取键值对，ScanOption，NONE为获取全部键值对，ScanOption.scanOptions().match("hash-key2").build
      * 匹配获取键位map1 的键值对，不能模糊匹配
-     *
+     * <p>
      * sacn(H key, ScanOptions options)
      */
     public void scan() {
         Cursor<Map.Entry<Object, Object>> scan = stringRedisTemplate.opsForHash().scan("hash", ScanOptions.NONE);
         while (scan.hasNext()) {
-            Map.Entry<Object,Object> next = scan.next();
+            Map.Entry<Object, Object> next = scan.next();
             System.out.println(next.getKey() + "---->" + next.getValue());
         }
     }
 
     /**
      * 删除变量中的键值对，可以传入多个参数，删除多个键值对，返回删除成功的个数
-     *
+     * <p>
      * delete(H key, Ohject ... hashKeys)
      */
     public void delete() {
         Long delete = stringRedisTemplate.opsForHash().delete("hash", "hash-key", "hash-key1");
         System.out.println(delete);
     }
-
 
 }

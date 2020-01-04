@@ -21,30 +21,31 @@ public class RedisString {
 
     /**
      * 新增一个字符串类型的值， key是建，value是值
-     *
+     * <p>
      * set(K key, V value)
      */
     public void set() {
         // 存入永久数据
-        stringRedisTemplate.opsForValue().set("test2","1");
+        stringRedisTemplate.opsForValue().set("test2", "1");
         // 也可以向redis里存入数据和设置缓存数据
-        stringRedisTemplate.opsForValue().set("test1","hello redis", 1000, TimeUnit.SECONDS);
+        stringRedisTemplate.opsForValue().set("test1", "hello redis", 1000, TimeUnit.SECONDS);
     }
 
     /**
      * 批量插入， key值存在会覆盖原值
-     *
+     * <p>
      * multiSet(Map<? extends K, ? extends V> map)
      */
     public void multiSet() {
-        Map<String,String> map = new HashMap<>(16);
+        Map<String, String> map = new HashMap<>(16);
         map.put("testMultiSet1", "value0");
         map.put("testMultiSet2", "value2");
         stringRedisTemplate.opsForValue().multiSet(map);
     }
+
     /**
      * 批量插入，如果里面的所有key都不存在，则全部插入， 返回true， 如果其中一个在redis中已存在，全部插入， 返回false
-     *
+     * <p>
      * multiSetIfAbsent(Map<? extends K, ? extends V> map)
      */
     public void multiSetIfAbsent() {
@@ -57,7 +58,7 @@ public class RedisString {
 
     /**
      * 如果不存在则插入，返回true为插入成功，false失败
-     *
+     * <p>
      * setIfAbsent(K key, V var2)
      */
     public void setIfAbsent() {
@@ -67,7 +68,7 @@ public class RedisString {
 
     /**
      * 获取值，key不存在返回null
-     *
+     * <p>
      * get(Object key)
      */
     public void get() {
@@ -76,7 +77,7 @@ public class RedisString {
 
     /**
      * 批量获取，key不存在返回null
-     *
+     * <p>
      * multiGet(Collection<K> keys)
      */
     public void multiGet() {
@@ -87,7 +88,7 @@ public class RedisString {
 
     /**
      * 获取指定字符串的长度
-     *
+     * <p>
      * size(K key)
      */
     public void size() {
@@ -97,7 +98,7 @@ public class RedisString {
 
     /**
      * 在原有的值基础上新增字符串到末尾
-     *
+     * <p>
      * append(K key, String value)
      */
     public void append() {
@@ -107,7 +108,7 @@ public class RedisString {
 
     /**
      * 获取原来key建对应的值并重新赋新值
-     *
+     * <p>
      * getAndSet(K key, V value)
      */
     public void getAndSet() {
@@ -117,7 +118,7 @@ public class RedisString {
 
     /**
      * 获取指定key的值进行减一，如果value不是Integer类型，会抛出异常，如果key不存在会创建一个，默认为value为0
-     *
+     * <p>
      * decrement(k key)
      */
     public void decrement() {
@@ -127,7 +128,7 @@ public class RedisString {
 
     /**
      * 获取指定的值进行加一，如果value不是Integer类型，会抛出异常，如果key不存在会创建一个，默认value为0
-     *
+     * <p>
      * increment(K key)
      */
     public void increment() {
@@ -137,7 +138,7 @@ public class RedisString {
 
     /**
      * 删除指定key，成功返回true，否则false
-     *
+     * <p>
      * delete(K key)
      */
     public void delete() {
@@ -147,7 +148,7 @@ public class RedisString {
 
     /**
      * 删除多个key，返回删除key的个数
-     *
+     * <p>
      * delete(Collection<K> keys)
      */
     public void deleteMulti() {

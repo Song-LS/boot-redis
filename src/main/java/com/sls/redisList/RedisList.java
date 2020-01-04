@@ -18,7 +18,7 @@ public class RedisList {
 
     /**
      * 在变量左边添加元素值，如果key不存在会新建，添加成功返回添加后的总个数
-     *
+     * <p>
      * leftPush(K key, V value)
      */
     public void leftPush() {
@@ -28,7 +28,7 @@ public class RedisList {
 
     /**
      * 向左边批量添加参数元素， 如果key不存在会新建，添加成功返回添加后的总个数
-     *
+     * <p>
      * leftPushAll(K key, V.. values)
      */
     public void leftPushAll() {
@@ -38,7 +38,7 @@ public class RedisList {
 
     /**
      * 在变量右边添加元素，如果key不存在会新建，添加成功返回添加后的总个数
-     *
+     * <p>
      * rightPush(K key, V value)
      */
     public void rightPush() {
@@ -48,7 +48,7 @@ public class RedisList {
 
     /**
      * 向右边批量添加元素， 如果key不存则会新建，添加成功返回添加后的总个数
-     *
+     * <p>
      * rightPushAll(K key, V ...values)
      */
     public void rightPushAll() {
@@ -58,7 +58,7 @@ public class RedisList {
 
     /**
      * 如果存在集合则添加元素
-     *
+     * <p>
      * leftPushIfPresent(K key, V value)
      */
     public void leftPushIfPresent() {
@@ -68,7 +68,7 @@ public class RedisList {
 
     /**
      * 向已存在的集合中添加元素，返回集合总元素个数
-     *
+     * <p>
      * rigthPushIfPresent(k key, V value)
      */
     public void rightPushIfPresent() {
@@ -78,7 +78,7 @@ public class RedisList {
 
     /**
      * 获取集合长度
-     *
+     * <p>
      * size(K key)
      */
     public void size() {
@@ -88,7 +88,7 @@ public class RedisList {
 
     /**
      * 移除集合中的左边第一个元素，返回删除的元素，如果元素为空，该集合会自动删除
-     *
+     * <p>
      * leftPop(K key)
      */
     public void leftPop() {
@@ -98,7 +98,7 @@ public class RedisList {
 
     /**
      * 移除集合中左边的元素在等待的时间里，如果超过等待的时间仍没有元素则退出
-     *
+     * <p>
      * leftPop(K key, long timeout, TimeUnit unit)
      */
     public void leftPopWait() {
@@ -108,7 +108,7 @@ public class RedisList {
 
     /**
      * 移除集合中右边的元素，返回删除的元素，如果元素为空，该集合会自动删除
-     *
+     * <p>
      * rigthPop(K key)
      */
     public void rightPop() {
@@ -118,16 +118,16 @@ public class RedisList {
 
     /**
      * 移除集合中右边的元素在等待的时间里， 如果超过等待的时间仍然没有元素则退出
-     *
+     * <p>
      * rightPop(K key, long timeout, TimeUnit unit)
      */
     public void rightPopWait() {
-        stringRedisTemplate.opsForList().rightPop("list2",10, TimeUnit.SECONDS);
+        stringRedisTemplate.opsForList().rightPop("list2", 10, TimeUnit.SECONDS);
     }
 
     /**
      * 移除第一个集合右边的一个元素，插入第二个集合左边插入这个元素
-     *
+     * <p>
      * rightPopAndLeftPush(K sourceKet, k destinationKey)
      */
     public void rightPopAndLeftPush() {
@@ -136,7 +136,7 @@ public class RedisList {
 
     /**
      * 在集合的指定位置插入元素，如果指定位置已有元素，则覆盖，没有则新增，超过集合下标+n则会报错
-     *
+     * <p>
      * set(K key, long index, V value)
      */
     public void set() {
@@ -147,7 +147,7 @@ public class RedisList {
      * 从存储在键中的列表中删除等于值的元素的第一个计数事件，count>0：删除等于从左到右移动的值
      * count<0：删除等于从右到左移动的值的第一个元素；
      * count=0：删除等于value的所有元素
-     *
+     * <p>
      * remove(K key, long count, Object value)
      */
     public void remove() {
@@ -157,7 +157,7 @@ public class RedisList {
 
     /**
      * 截取集合元素长度， 保留长度内的数据
-     *
+     * <p>
      * trim(K key, long start, long end)
      */
     public void trim() {
@@ -166,7 +166,7 @@ public class RedisList {
 
     /**
      * 获取集合指定位置的值
-     *
+     * <p>
      * index(K key, long index)
      */
     public void index() {
@@ -176,9 +176,9 @@ public class RedisList {
 
     /**
      * 获取指定区间的值
-     *
+     * <p>
      * range(K key, long start, long end)
-      */
+     */
     public void range() {
         List<String> list = stringRedisTemplate.opsForList().range("list", 0, -1);
         System.out.println(list);
@@ -186,7 +186,7 @@ public class RedisList {
 
     /**
      * 删除指定集合，返回true，删除成功
-     *
+     * <p>
      * delete(K key)
      */
     public void delete() {

@@ -20,7 +20,7 @@ public class RedisSet {
 
     /**
      * 向变量中批量添加值，返回添加的数量
-     *
+     * <p>
      * add(K key, V values)
      */
     public void add() {
@@ -30,7 +30,7 @@ public class RedisSet {
 
     /**
      * 获取变量的值
-     *
+     * <p>
      * members(K key)
      */
     public void members() {
@@ -40,7 +40,7 @@ public class RedisSet {
 
     /**
      * 获取变量中值的长度
-     *
+     * <p>
      * size(K key)
      */
     public void size() {
@@ -50,7 +50,7 @@ public class RedisSet {
 
     /**
      * 随机获取变量中指定个数的元素
-     *
+     * <p>
      * randomMembers(K key, long count)
      */
     public void randomMembers() {
@@ -60,7 +60,7 @@ public class RedisSet {
 
     /**
      * 检查给定的元素是否在变量中，true为存在
-     *
+     * <p>
      * isMember(K key, Object value)
      */
     public void isMember() {
@@ -70,7 +70,7 @@ public class RedisSet {
 
     /**
      * 转义变量的元素值到另一个变量中
-     *
+     * <p>
      * move(K key, V value, K targetKey)
      */
     public void move() {
@@ -80,7 +80,7 @@ public class RedisSet {
 
     /**
      * 弹出变量中的元素，当元素全部弹完，变量也会删除
-     *
+     * <p>
      * pop(K key)
      */
     public void pop() {
@@ -90,7 +90,7 @@ public class RedisSet {
 
     /**
      * 批量删除变量中的元素，返回删除的数量
-     *
+     * <p>
      * remove(K key, V ... values)
      */
     public void remove() {
@@ -101,7 +101,7 @@ public class RedisSet {
     /**
      * 匹配获取键值对，ScanOptions.NONE为获取全部键值对；
      * ScanOptions.scanOptions().match("C").build()匹配获取键位map1的键值对,不能模糊匹配。
-     *
+     * <p>
      * scan(K key, ScanOptions options)
      */
     public void scan() {
@@ -114,7 +114,7 @@ public class RedisSet {
 
     /**
      * 通过集合求差值
-     *
+     * <p>
      * difference(K key, K otherKey)
      */
     public void difference() {
@@ -124,7 +124,7 @@ public class RedisSet {
 
     /**
      * 将求出了的差值元素保存
-     *
+     * <p>
      * differenceAndStore(K key, K otherKey, K targetKey)
      */
     public void differenceAndStore() {
@@ -134,7 +134,7 @@ public class RedisSet {
 
     /**
      * 获取去重的随机元素
-     *
+     * <p>
      * distinctRandomMembers(K key, long count)
      */
     public void distinctRandomMember() {
@@ -144,7 +144,7 @@ public class RedisSet {
 
     /**
      * 获取两个变量中的交集
-     *
+     * <p>
      * intersect(K key, K otherkey)
      */
     public void intersect() {
@@ -154,7 +154,7 @@ public class RedisSet {
 
     /**
      * 获取两个变量交集后保存到最后一个变量上
-     *
+     * <p>
      * intersectAndStore(K key, K otherKey, K targetKey)
      */
     public void intersectAndStore() {
@@ -164,7 +164,7 @@ public class RedisSet {
 
     /**
      * 获取两个变量的合集
-     *
+     * <p>
      * union(K key, K otherKey)
      */
     public void union() {
@@ -174,7 +174,7 @@ public class RedisSet {
 
     /**
      * 获取两个变量合集后保存到另一个变量中
-     *
+     * <p>
      * unionAndStore(K key, K otherKey, K targetKey)
      */
     public void unionAndStore() {

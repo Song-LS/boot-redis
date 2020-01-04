@@ -19,7 +19,7 @@ public class RedisZSet {
 
     /**
      * 添加元素到变量中同时指定元素的分值
-     *
+     * <p>
      * add(K key, V value, double score)
      */
     public void add() {
@@ -29,7 +29,7 @@ public class RedisZSet {
 
     /**
      * 通过TypedTuple方式新增数据
-     *
+     * <p>
      * add(K key,Set<ZSetOperations.TypedTuple<V>> tuples)
      */
     public void addByTypedTuple() {
@@ -46,7 +46,7 @@ public class RedisZSet {
 
     /**
      * 获取指定区间的元素
-     *
+     * <p>
      * range(K key, long start, long end)
      */
     public void range() {
@@ -56,7 +56,7 @@ public class RedisZSet {
 
     /**
      * 用于获取满足非score 的排序取值，这个排序只有在相同分数的情况下才能使用，如果有不同的分数则返回值不确定
-     *
+     * <p>
      * rangeByLex(K key, RedisZSetCommands.Range range)
      */
     public void rangeByLex() {
@@ -66,18 +66,18 @@ public class RedisZSet {
 
     /**
      * 用于获取满足非score 的设置下标开始的长度排序取值
-     *
+     * <p>
      * rangeByLex(K key, range range, limit limlit)
      */
     public void rangeByLexAndLimit() {
         Set<String> rangeByLex = stringRedisTemplate.opsForZSet().rangeByLex("zset", RedisZSetCommands.Range.range().lt("E")
-                                ,RedisZSetCommands.Limit.limit().offset(1).count(2));
+                , RedisZSetCommands.Limit.limit().offset(1).count(2));
         System.out.println(rangeByLex);
     }
 
     /**
      * 根据设置score 获取区间值
-     *
+     * <p>
      * rangeByScore(K key, double min, double max)
      */
     public void rangeByScore() {
@@ -87,7 +87,7 @@ public class RedisZSet {
 
     /**
      * 获取RedisZSetCommands.Tuples的区间值
-     *
+     * <p>
      * rangeWithScores(K key, long start, long end)
      */
     public void rangeWithScores() {
@@ -102,7 +102,7 @@ public class RedisZSet {
 
     /**
      * 获取区间值的个数
-     *
+     * <p>
      * count(K key, double min, double max)
      */
     public void count() {
@@ -112,7 +112,7 @@ public class RedisZSet {
 
     /**
      * 获取变量中指定元素的索引，下标开始为0
-     *
+     * <p>
      * rank(K key, Object o)
      */
     public void rank() {
@@ -122,7 +122,7 @@ public class RedisZSet {
 
     /**
      * 匹配获取键值对，ScanOptions.NONE为获取全部键值对；ScanOptions.scanOptions().match("C").build()匹配获取键位map1的键值对,不能模糊匹配。
-     *
+     * <p>
      * scan(K key, ScanOptions options)
      */
     public void scan() {
@@ -135,7 +135,7 @@ public class RedisZSet {
 
     /**
      * 获取变量中元素的个数
-     *
+     * <p>
      * zCard(k key)
      */
     public void zCard() {
@@ -145,7 +145,7 @@ public class RedisZSet {
 
     /**
      * 修改变量中元素的分值
-     *
+     * <p>
      * incrementScore(K key, V value, double delta)
      */
     public void incrementScore() {
@@ -155,7 +155,7 @@ public class RedisZSet {
 
     /**
      * 索引倒序排列指定区间的元素
-     *
+     * <p>
      * reverseRange(K key, long start, long end)
      */
     public void reverseRange() {
@@ -165,7 +165,7 @@ public class RedisZSet {
 
     /**
      * 倒序排列指定分值区间的元素
-     *
+     * <p>
      * reverseRangeByScore(K key, double min, double max)
      */
     public void reverseRangeByScore() {
@@ -175,7 +175,7 @@ public class RedisZSet {
 
     /**
      * 倒序排序获取RedisZSetCommands.Tuples的分值区间值
-     *
+     * <p>
      * reverseRangeByScore(K key, double min, double max, long offset, long count)
      */
     public void reverserRangeByScoreLength() {
@@ -185,18 +185,18 @@ public class RedisZSet {
 
     /**
      * 倒序排序获取RedisZSetCommands.Tuples的分值区间值。
-     *
+     * <p>
      * reverseRangeByScoreWithScores(K key, double min, double max)
      */
     public void reverseRangeByScoreWithScores() {
         Set<ZSetOperations.TypedTuple<String>> zset = stringRedisTemplate.opsForZSet().reverseRangeByScoreWithScores("zset", 1, 5);
         assert zset != null;
-        zset.iterator().forEachRemaining(e-> System.out.println(e.getValue()+"-->" + e.getScore()));
+        zset.iterator().forEachRemaining(e -> System.out.println(e.getValue() + "-->" + e.getScore()));
     }
 
     /**
      * 获取倒序排列的索引值
-     *
+     * <p>
      * reverseRank(k key, object o)
      */
     public void reverseRank() {
@@ -206,7 +206,7 @@ public class RedisZSet {
 
     /**
      * 获取2个变量的交集存放到第3个变量里面。
-     *
+     * <p>
      * intersectAndStore(K key, K otherKey, K destKey)
      */
     public void intersectAndStore() {
@@ -216,7 +216,7 @@ public class RedisZSet {
 
     /**
      * 获取2个变量的合集存放到第3个变量里面。 返回操作的数量
-     *
+     * <p>
      * unionAndStore(K key, K otherKey, K destKey)
      */
     public void unionAndStore() {
@@ -226,7 +226,7 @@ public class RedisZSet {
 
     /**
      * 批量移除元素根据元素值。返回删除的元素数量
-     *
+     * <p>
      * remove(K key, Object... values)
      */
     public void remove() {
@@ -236,7 +236,7 @@ public class RedisZSet {
 
     /**
      * 根据分值移除区间元素。返回删除的数量
-     *
+     * <p>
      * removeRangeByScore(k key, double min, double max)
      */
     public void removeRangeByScore() {
@@ -246,7 +246,7 @@ public class RedisZSet {
 
     /**
      * 根据索引值移除区间元素。返回移除的元素集合
-     *
+     * <p>
      * removeRange(K key, long start, long end)
      */
     public void removeRange() {
